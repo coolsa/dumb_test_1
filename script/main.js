@@ -4,7 +4,6 @@ requirejs.config({
 	//testeronivar s
 requirejs(['crafty'],
 function ($){
-	//window.onload = function() {
 	Crafty.init();
 	Crafty.pixelart(true);
 	Crafty.sprite(32,"resources/images/sprite.png", {
@@ -27,18 +26,37 @@ function ($){
 		empty: [1,-1]
 	});
 	iso = Crafty.isometric.size(32);
-	var z=0;
+	Crafty.viewport.x = 0;
+	Crafty.viewport.y = 0;
 	for(var x=0;x<5;x++){
-		for(var y=0;y<5;y++){
-			for(var z=0;z<3;z++){
-				var tile = newCube(iso,-y+z*32);
+		for(var y=0;y<3;y++){
+			for(var z=0;z<5;z++){
+				var tile = newCube(iso,y*32-z);
 				drawAt(x,y,z,tile,iso);
-				if(z==0)tile.sprite("chain").trigger("drawFace","pos_z_norm");
-				if(z==1)tile.sprite("impulse").trigger("drawFace","pos_x_norm");
-				if(z==2)tile.sprite("repeating").trigger("drawFace","neg_y_cond");
+				if(y==0)tile.sprite("chain").trigger("drawFace","pos_z_norm");
+				if(y==1)tile.sprite("impulse").trigger("drawFace","pos_x_norm");
+				if(y==2)tile.sprite("repeating").trigger("drawFace","neg_y_cond");
 			}
 		}
 	}
+	// var tile = newCube(iso,0);
+	// drawAt(0,0,0,tile,iso);
+	// tile.sprite("impulse").trigger("drawFace","pos_x_norm");
+	// var tile = newCube(iso,1);
+	// drawAt(1,0,0,tile,iso);
+	// tile.sprite("chain").trigger("drawFace","pos_y_norm");
+	// var tile = newCube(iso,2);
+	// drawAt(1,1,0,tile,iso);
+	// tile.sprite("chain").trigger("drawFace","pos_y_norm");
+	// var tile = newCube(iso,3);
+	// drawAt(1,2,0,tile,iso);
+	// tile.sprite("chain").trigger("drawFace","pos_z_norm");
+	// var tile = newCube(iso,2);
+	// drawAt(1,2,1,tile,iso);
+	// tile.sprite("chain").trigger("drawFace","pos_z_norm");
+	//center better
+	Crafty.viewport.x = 64;
+	Crafty.viewport.y = 64;
 	function newCube(iso,layer){//create a new cube with clickable uses! made to modify
 		return Crafty.e("2D", "Canvas", "Mouse", "empty")
 		.attr('z',layer)//
@@ -56,7 +74,16 @@ function ($){
 			this._children[2].sprite("empty");
 		});
 	}
-	function drawAt(x,y,z,tile,iso){
+	function drawAt(x,z,y,tile,iso){//puts the x,y,z into something a bit more logical
+		/*the math behind this is simple. x1,y1 is part of the normal isometric grid.
+		that is an issue when drawing in 3d space in a normal fashion, so it needs
+		converting to x2,y2 which are in a 3d space similar to a cube game.
+		The formulas to convert between them are as follows:
+		x1=x2-Math.ceil(y1/2) = y2+math.floor(y1/2)
+		y1=x2-y2
+		x2=x1+math.ceil(y1/2)
+		y2=x1-math.floor(y1/2)
+		*/
 		yPos=x-y;
 		iso.place(x-Math.ceil(yPos/2),yPos,z*2,tile);
 	}
@@ -70,7 +97,6 @@ function ($){
 	Crafty.addEvent(this, Crafty.stage.elem, "mousedown", function(e) {
 		if(e.button > 1) return;
 		var base = {x: e.clientX, y: e.clientY};
-
 		function scroll(e) {
 			var dx = base.x - e.clientX,
 				dy = base.y - e.clientY;
