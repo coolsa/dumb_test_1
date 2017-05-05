@@ -1,6 +1,50 @@
+* {
+	border-width:0;
+	margin:0;
+	padding:0;
+}
+
 .noselect {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.main-toolbar{
+	list-style-type: none;
+	margin:0;
+	padding:0;
+	width:100%;
+	height:40%;
+	background-color: violet;
+}
+.main-toolbar .toolbar-button{
+	display:inline;
+	width:70px;
+}
+.center {
+	list-style-type: none;
+	margin:0;
+	padding:0;
+	width:100%;
+	height:40%;
+	background-color: violet;
+}
+.center .file-tree{
+	float:left;
+	width:30%;
+	height:inherit;
+	background-color: orange;
+}
+.center .main-code {
+	height:inherit;
+	width:70%;
+	float:right;
+	background-color:violet;
+	display:inline;
+}
+.compiled-commands{
+	position:fixed;
+	bottom:0;
+	width:100%;
 }

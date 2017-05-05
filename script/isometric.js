@@ -1,7 +1,7 @@
 define(['crafty'], function(Crafty){
 	return function isoRun(){
 		//startup Crafty
-		Crafty.init();
+		Crafty.init(document.getElementById('cube-render'));
 		Crafty.pixelart(true);
 		Crafty.sprite(32,"resources/images/sprite.png", {
 			pos_x_norm: [0,0],
