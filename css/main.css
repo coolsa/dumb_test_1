@@ -2,49 +2,55 @@
 	border-width:0;
 	margin:0;
 	padding:0;
+	height:100%;
 }
 
-.noselect {
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-}
 .main-toolbar{
-	list-style-type: none;
 	margin:0;
 	padding:0;
+	height:20%;
 	width:100%;
-	height:40%;
 	background-color: violet;
 }
-.main-toolbar .toolbar-button{
+.toolbar-button{
 	display:inline;
 	width:70px;
 }
 .center {
-	list-style-type: none;
-	margin:0;
-	padding:0;
+	height:70%;
 	width:100%;
-	height:40%;
-	background-color: violet;
 }
-.center .file-tree{
+.right-toolbar{
+	float:right;
+}
+.file-tree{
 	float:left;
 	width:30%;
-	height:inherit;
+	height:100%;
 	background-color: orange;
 }
-.center .main-code {
+.main-code {
 	height:inherit;
 	width:70%;
-	float:right;
-	background-color:violet;
+	height:100%;
+	background-color:greenyellow;
+	float:left;
+}
+.text-render{
+	height:100%;
+	width:100%;
+	float:left;
+	background-color:green;
 	display:inline;
 }
+.cube-render{
+	height:100%;
+	width:50%;
+	display:inline;
+	float:right;
+	background-color:pink;
+}
 .compiled-commands{
-	position:fixed;
-	bottom:0;
+	height:10%;
 	width:100%;
 }

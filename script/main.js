@@ -1,15 +1,17 @@
 requirejs.config({
 	baseUrl: './script',
 	paths: {
-		crafty: '../resources/library/crafty'
+		crafty: '../resources/library/crafty',
+		jquery: '../resources/library/jquery'
 	}
 });
 	//testeronivar s
 require([
 	"isometric",
-	"crafty"
+	"crafty",
+	"jquery"
 	],
-function ($, isometric, crafty){
+function ($, isometric, crafty, jquery){
 	$(function(){
 		isoRun();
 	});

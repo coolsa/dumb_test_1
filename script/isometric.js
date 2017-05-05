@@ -1,7 +1,7 @@
-define(['crafty'], function(Crafty){
+define(['crafty','jquery'], function(Crafty){
 	return function isoRun(){
 		//startup Crafty
-		Crafty.init(document.getElementById('cube-render'));
+		Crafty.init($(".text-render").width()/2,$(".text-render").height(),document.getElementById("cube-render"));
 		Crafty.pixelart(true);
 		Crafty.sprite(32,"resources/images/sprite.png", {
 			pos_x_norm: [0,0],
@@ -41,6 +41,19 @@ define(['crafty'], function(Crafty){
 		});
 		iso = Crafty.isometric.size(32);
 		isoRender(iso);
+		Crafty.viewport.width=$(".text-render").width()/2;
+		Crafty.viewport.height=$(".text-render").height();
+		Crafty.viewport.reset();
+		Crafty.viewport.x = $(".text-render").width()/4-(2.5*32);
+		Crafty.viewport.y = $(".text-render").height()/2;
+		$(window).resize(function(){
+			Crafty.viewport.width=$(".text-render").width()/2;
+			Crafty.viewport.height=$(".text-render").height();
+			Crafty.viewport.reset();
+			Crafty.viewport.x = $(".text-render").width()/4-(2.5*32);
+			Crafty.viewport.y = $(".text-render").height()/2;
+		});
+	
 	}
 	function isoRender(iso){
 		Crafty.viewport.x = 0;
@@ -56,6 +69,9 @@ define(['crafty'], function(Crafty){
 				}
 			}
 		}
+		//do something with arrays for the rendering, 3d ones are neat
+		//something like xyz[x][y][z] in a loop
+		//ex setup would be: xyz[][][]=[] actualy it might not work. commit and push and sleep rip
 		// var tile = newCube(iso,0);
 		// drawAt(0,0,0,tile,iso);
 		// tile.sprite("impulse").trigger("drawFace","pos_x_norm");
@@ -72,8 +88,6 @@ define(['crafty'], function(Crafty){
 		// drawAt(1,2,1,tile,iso);
 		// tile.sprite("chain").trigger("drawFace","pos_z_norm");
 		//center better
-		Crafty.viewport.x = 64;
-		Crafty.viewport.y = 64;
 	}
 	function newCube(iso,layer){//create a new cube with clickable uses! made to modify
 		return Crafty.e("2D", "Canvas", "Mouse", "empty")
@@ -84,7 +98,6 @@ define(['crafty'], function(Crafty){
 			drawOver(this._x,this._y,this._z,iso,this,"empty");
 		})
 		.bind("Click",function(e){
-			console.log(e.button);
 			this.destroy();
 		}).bind("MouseOver",function(e){
 			this._children[2].sprite("select");
@@ -111,5 +124,6 @@ define(['crafty'], function(Crafty){
 		parent.attach(Crafty.e("2D","Canvas",sprite).attr('z',z));
 		iso.place(px.x,px.y,0,parent._children[child]);
 	}
+
 		//the below allows movement with the thingy. copy paste from example, #plagerism
 });
