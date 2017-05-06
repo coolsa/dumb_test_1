@@ -3,6 +3,7 @@
 	margin:0;
 	padding:0;
 	height:100%;
+	overflow:hidden;
 }
 
 .main-toolbar{
@@ -28,6 +29,7 @@
 	width:30%;
 	height:100%;
 	background-color: orange;
+	overflow-y:scroll;
 }
 .main-code {
 	height:inherit;
@@ -38,10 +40,11 @@
 }
 .text-render{
 	height:100%;
-	width:100%;
+	width:50%;
 	float:left;
 	background-color:green;
 	display:inline;
+	overflow-y:scroll;
 }
 .cube-render{
 	height:100%;

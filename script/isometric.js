@@ -1,7 +1,7 @@
-define(['crafty','jquery'], function(Crafty){
+define(['crafty','jquery','jqueryui'], function(Crafty){
 	return function isoRun(){
 		//startup Crafty
-		Crafty.init($(".text-render").width()/2,$(".text-render").height(),document.getElementById("cube-render"));
+		Crafty.init($(".main-code").width()-$(".text-render").width(),$(".main-code").height(),document.getElementById("cube-render"));
 		Crafty.pixelart(true);
 		Crafty.sprite(32,"resources/images/sprite.png", {
 			pos_x_norm: [0,0],
@@ -41,19 +41,26 @@ define(['crafty','jquery'], function(Crafty){
 		});
 		iso = Crafty.isometric.size(32);
 		isoRender(iso);
-		Crafty.viewport.width=$(".text-render").width()/2;
-		Crafty.viewport.height=$(".text-render").height();
-		Crafty.viewport.reset();
-		Crafty.viewport.x = $(".text-render").width()/4-(2.5*32);
-		Crafty.viewport.y = $(".text-render").height()/2;
-		$(window).resize(function(){
-			Crafty.viewport.width=$(".text-render").width()/2;
-			Crafty.viewport.height=$(".text-render").height();
-			Crafty.viewport.reset();
-			Crafty.viewport.x = $(".text-render").width()/4-(2.5*32);
-			Crafty.viewport.y = $(".text-render").height()/2;
+		$(".text-render").resizable({
+			containment: $(".center")
 		});
-	
+		$(".text-render").resize(function(){
+			$('#cube-render').width($(".main-code").width()-$(".text-render").width());
+		});
+		Crafty.viewport.width=$(".main-code").width()-$(".text-render").width();
+		Crafty.viewport.height=$(".main-code").height();
+		Crafty.viewport.reset();
+		Crafty.viewport.x = ($(".main-code").width()-$(".text-render").width())/2-32*2.5;
+		Crafty.viewport.y = $(".main-code").height()/2;
+		$(window).resize(function(){
+			$('#cube-render').width($(".main-code").width()-$(".text-render").width());
+			$('.text-render').height($(".main-code").height());
+			Crafty.viewport.width=$(".main-code").width()-$(".text-render").width();
+			Crafty.viewport.height=$(".main-code").height();
+			Crafty.viewport.reset();
+			Crafty.viewport.x = ($(".main-code").width()-$(".text-render").width())/2-32*2.5;
+			Crafty.viewport.y = $(".main-code").height()/2;
+		});
 	}
 	function isoRender(iso){
 		Crafty.viewport.x = 0;
