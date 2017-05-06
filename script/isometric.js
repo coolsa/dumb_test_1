@@ -1,4 +1,4 @@
-define(['crafty','jquery','jqueryui'], function(Crafty){
+define(['crafty','jquery','jqueryresizable'], function(Crafty){
 	return function isoRun(){
 		//startup Crafty
 		Crafty.init($(".main-code").width()-$(".text-render").width(),$(".main-code").height(),document.getElementById("cube-render"));
@@ -42,25 +42,19 @@ define(['crafty','jquery','jqueryui'], function(Crafty){
 		iso = Crafty.isometric.size(32);
 		isoRender(iso);
 		$(".text-render").resizable({
-			containment: $(".center")
+			resizeHeight:false,
+			onDrag: function(){
+				resizeIso();
+			},
+			onDragEnd: function(){
+				resizeIso();
+			}
 		});
-		$(".text-render").resize(function(){
-			$('#cube-render').width($(".main-code").width()-$(".text-render").width());
-		});
-		Crafty.viewport.width=$(".main-code").width()-$(".text-render").width();
-		Crafty.viewport.height=$(".main-code").height();
-		Crafty.viewport.reset();
-		Crafty.viewport.x = ($(".main-code").width()-$(".text-render").width())/2-32*2.5;
-		Crafty.viewport.y = $(".main-code").height()/2;
 		$(window).resize(function(){
-			$('#cube-render').width($(".main-code").width()-$(".text-render").width());
-			$('.text-render').height($(".main-code").height());
-			Crafty.viewport.width=$(".main-code").width()-$(".text-render").width();
-			Crafty.viewport.height=$(".main-code").height();
-			Crafty.viewport.reset();
-			Crafty.viewport.x = ($(".main-code").width()-$(".text-render").width())/2-32*2.5;
-			Crafty.viewport.y = $(".main-code").height()/2;
+			resizeIso();
+			console.log("test");
 		});
+		resizeIso();
 	}
 	function isoRender(iso){
 		Crafty.viewport.x = 0;
@@ -131,6 +125,14 @@ define(['crafty','jquery','jqueryui'], function(Crafty){
 		parent.attach(Crafty.e("2D","Canvas",sprite).attr('z',z));
 		iso.place(px.x,px.y,0,parent._children[child]);
 	}
-
+	function resizeIso(){
+			$('#cube-render').width($(".main-code").width()-$(".text-render").width());
+			Crafty.viewport.width=$(".main-code").width()-$(".text-render").width();
+			Crafty.viewport.height=$(".main-code").height();
+			console.log($(".text-render").width());
+			Crafty.viewport.reset();
+			Crafty.viewport.x = ($(".main-code").width()-$(".text-render").width())/2-32*2.5;
+			Crafty.viewport.y = $(".main-code").height()/2;
+	}
 		//the below allows movement with the thingy. copy paste from example, #plagerism
 });

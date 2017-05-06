@@ -3,21 +3,18 @@ requirejs.config({
 	paths: {
 		crafty: '../resources/library/crafty',
 		jquery: '../resources/library/jquery',
-		jqueryui: '../resources/library/jquery-ui/jquery-ui'
+		jqueryresizable: '../resources/library/jquery-resizable'
 	}
 });
 	//testeronivar s
 require([
 	"isometric",
 	"crafty",
-	"jquery"
+	"jquery",
+	"jqueryresizable"
 	],
-function ($, isometric, crafty, jquery, jqueryui){
+function ($, isometric, crafty, jquery, jqueryresizable){
 	$(function(){
-		$(window).resize(function(){
-			$('#cube-render').width($(".main-code").width()-$(".text-render").width());
-			$('.text-render').height($(".main-code").height());
-		});
 		isoRun();
 	});
 });
