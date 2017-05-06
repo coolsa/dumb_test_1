@@ -42,13 +42,13 @@ define(['crafty','jquery','jqueryresizable'], function(Crafty){
 		iso = Crafty.isometric.size(32);
 		isoRender(iso);
 		$(".text-render").resizable({
+			handleSelector: ".splitter",
 			resizeHeight:false,
 			onDrag: function(){
 				resizeIso();
+				document.getElementById("text-render").style.maxWidth = $(".main-code").width()-$(".splitter").width() +"px";
 			},
 			onDragEnd: function(){
-				resizeIso();
-				resizeIso();
 				resizeIso();
 			}
 		});
@@ -128,6 +128,7 @@ define(['crafty','jquery','jqueryresizable'], function(Crafty){
 	}
 	function resizeIso(){
 			$('#cube-render').width($(".main-code").width()-$(".text-render").width());
+			Crafty.viewport.width=$(".main-code").width()-$(".text-render").width();
 			Crafty.viewport.reload();
 			Crafty.viewport.x = ($(".main-code").width()-$(".text-render").width())/2-32*2.5;
 			Crafty.viewport.y = $(".main-code").height()/2;

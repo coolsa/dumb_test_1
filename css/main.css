@@ -54,8 +54,14 @@
 	overflow-y:auto;
 	width:50%;
 	flex: 0 0 auto;
-	min-width:30px;
 	max-width:100%;
+}
+.splitter {
+  flex: 0 0 auto;
+  width: 18px;  
+  background: url(https://raw.githubusercontent.com/RickStrahl/jquery-resizable/master/assets/vsizegrip.png) center center no-repeat #535353;
+  min-height: 200px;
+  cursor: col-resize;  
 }
 .cube-render{
 	height:100%;
