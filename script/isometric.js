@@ -1,7 +1,8 @@
-define(['crafty','jquery','jqueryresizable'], function(Crafty){
-	return function isoRun(){
+define(['crafty','jquery','jqueryresizable','rendering'], function(setupRender){
+	return function isometric(){
 		//startup Crafty
-		Crafty.init($(".main-code").width()-$(".text-render").width(),$(".main-code").height(),document.getElementById("cube-render"));
+		console.log("test");
+		Crafty.init($(".main-code").width()-$(".text-render").width(),$(".main-code").height(),$(".cube-render")[0]);
 		Crafty.pixelart(true);
 		Crafty.sprite(32,"resources/images/sprite.png", {
 			pos_x_norm: [0,0],
@@ -41,21 +42,7 @@ define(['crafty','jquery','jqueryresizable'], function(Crafty){
 		});
 		iso = Crafty.isometric.size(32);
 		isoRender(iso);
-		$(".text-render").resizable({
-			handleSelector: ".splitter",
-			resizeHeight:false,
-			onDrag: function(){
-				resizeIso();
-				document.getElementById("text-render").style.maxWidth = $(".main-code").width()-$(".splitter").width() +"px";
-			},
-			onDragEnd: function(){
-				resizeIso();
-			}
-		});
-		$(window).resize(function(){
-			resizeIso();
-		});
-		resizeIso();
+		setupRender();
 	}
 	function isoRender(iso){
 		Crafty.viewport.x = 0;
@@ -126,12 +113,4 @@ define(['crafty','jquery','jqueryresizable'], function(Crafty){
 		parent.attach(Crafty.e("2D","Canvas",sprite).attr('z',z));
 		iso.place(px.x,px.y,0,parent._children[child]);
 	}
-	function resizeIso(){
-			$('#cube-render').width($(".main-code").width()-$(".text-render").width());
-			Crafty.viewport.width=$(".main-code").width()-$(".text-render").width();
-			Crafty.viewport.reload();
-			Crafty.viewport.x = ($(".main-code").width()-$(".text-render").width())/2-32*2.5;
-			Crafty.viewport.y = $(".main-code").height()/2;
-	}
-		//the below allows movement with the thingy. copy paste from example, #plagerism
 });
