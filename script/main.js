@@ -10,7 +10,6 @@ requirejs.config({
 require([
 	'running',
 	'domReady',
-	'rendering',
 	'isoGrid',
 	'interface',
 	'crafty',
