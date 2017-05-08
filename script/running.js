@@ -1,7 +1,31 @@
-define(['isometric', 'interface'],function(isometric, interface){
+define(['isometric', 'interface','gridList','isoGrid'],function(isometric, interface, gridList, isoGrid){
 	function running(){
-		this.test = "test";
-		this.iso = new isometric();
+		this.grid = [];
+		for(var x=0;x<5;x++){
+			this.grid[x]=[];
+			for(var y=0;y<3;y++){
+				this.grid[x][y]=[];
+				for(var z=0;z<5;z++){
+					this.grid[x][y][z]={
+						type:"repeating",
+						dir:"empty"
+					}
+					if(y==0){
+						this.grid[x][y][z].type="chain";
+						this.grid[x][y][z].face="neg_z_cond";
+					}
+					if(y==1){
+						this.grid[x][y][z].type="impulse";
+						this.grid[x][y][z].face="pos_x_norm";
+					}
+					if(y==2){
+						this.grid[x][y][z].type="repeating";
+						this.grid[x][y][z].face="pos_y_cond";
+					}
+				}
+			}
+		}
+		this.iso = new isoGrid();
 		this.interface = new interface();
 	}
 	return running;

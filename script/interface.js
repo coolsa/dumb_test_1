@@ -1,8 +1,9 @@
 define([
+	'crafty',
 	'jquery',
 	'jqueryresizable',
 	'isometric'
-],function($){
+],function(Crafty, $){
 	function interface(){
 		//this.$render-area = $(".main-code");
 		this.slider();

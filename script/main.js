@@ -7,17 +7,17 @@ requirejs.config({
 		domReady: '../resources/library/domReady'
 	}
 });
-	//testeronivar s
 require([
-	"running",
+	'running',
 	'domReady',
-	"isometric",
-	"rendering",
-	"crafty",
-	"jquery",
-	"jqueryresizable"
+	'rendering',
+	'isoGrid',
+	'interface',
+	'crafty',
+	'jquery',
+	'jqueryresizable'
 	],
-function (running, domReady){//, rendering, crafty, jquery, jqueryresizable){
+function (running, domReady){
 	domReady(function(){
 		window.running = new running();
 	});
