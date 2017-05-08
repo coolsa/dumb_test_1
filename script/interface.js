@@ -1,8 +1,7 @@
 define([
 	'crafty',
 	'jquery',
-	'jqueryresizable',
-	'isometric'
+	'jqueryresizable'
 ],function(Crafty, $){
 	function interface(){
 		//this.$render-area = $(".main-code");

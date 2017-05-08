@@ -1,4 +1,4 @@
-define(['isometric', 'interface','gridList','isoGrid'],function(isometric, interface, gridList, isoGrid){
+define(['interface','isoGrid'],function(interface, isoGrid){
 	function running(){
 		this.grid = [];
 		for(var x=0;x<5;x++){
