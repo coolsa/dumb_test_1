@@ -27,7 +27,9 @@ define(['interface','isoGrid'],function(interface, isoGrid){
 		}
 		this.iso = new isoGrid();
 		this.interface = new interface();
+		this.interface.isoSize=(this.grid.length+this.grid[0][0].length);
 		this.iso.render(this.grid);
+		this.interface.resizeIso();
 	}
 	return running;
 })

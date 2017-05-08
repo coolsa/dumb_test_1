@@ -52,7 +52,6 @@ define([
 				for(var y=0;y<grid[x].length;y++){
 					if(grid[x][y]!=undefined){
 					for(var z=0;z<grid[x][y].length;z++){
-						console.log(grid[x][y][z]);
 						this.drawAt(x,y,z,this.newCube(y*32-z),grid[x][y][z]);
 					}}
 				}}

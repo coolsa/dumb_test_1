@@ -19,6 +19,6 @@ require([
 	],
 function (running, domReady){
 	domReady(function(){
-		window.running = new running();
+		window.run = new running();
 	});
 });
