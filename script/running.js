@@ -27,6 +27,7 @@ define(['isometric', 'interface','gridList','isoGrid'],function(isometric, inter
 		}
 		this.iso = new isoGrid();
 		this.interface = new interface();
+		this.iso.render(this.grid);
 	}
 	return running;
 })
