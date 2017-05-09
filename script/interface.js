@@ -23,10 +23,10 @@ define([
 				}
 			});
 			$(window).resize(function(){
-				resizeIso();
+				that.resizeIso();
 				$(".text-render")[0].style.maxWidth = $(".main-code").width()-$(".splitter").width() +"px";
 			});				
-			this.resizeIso();
+			that.resizeIso();
 		},
 		resizeIso: function(){
 				$('.cube-render').width($(".main-code").width()-$(".text-render").width());

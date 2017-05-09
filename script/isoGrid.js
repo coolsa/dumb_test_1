@@ -48,13 +48,11 @@ define([
 			Crafty.viewport.x = 0;
 			Crafty.viewport.y = 0;
 			for(var x=0;x<grid.length;x++){
-				if(grid[x]!=undefined){
-				for(var y=0;y<grid[x].length;y++){
-					if(grid[x][y]!=undefined){
-					for(var z=0;z<grid[x][y].length;z++){
+				if(grid[x]!=undefined)for(var y=0;y<grid[x].length;y++){
+					if(grid[x][y]!=undefined)for(var z=0;z<grid[x][y].length;z++){
 						this.drawAt(x,y,z,this.newCube(y*32-z),grid[x][y][z]);
-					}}
-				}}
+					}
+				}
 			}
 		},
 		newCube: function(layer){//create a new cube with clickable uses! made to modify
