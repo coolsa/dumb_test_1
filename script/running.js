@@ -1,5 +1,6 @@
 define(['interface','isoGrid'],function(interface, isoGrid){
 	function running(){
+		$(".center")[0].style.maxHeight = $(window).height()-100 + "px";
 		this.grid = [];
 		for(var x=0;x<5;x++){
 			this.grid[x]=[];

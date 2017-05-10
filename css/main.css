@@ -3,20 +3,13 @@
 	margin:0;
 	padding:0;
 	height:100%;
-}
-
-.scrollbar-measure {
-	width: 100px;
-	height: 100px;
-	overflow: scroll;
-	position: absolute;
-	top: -9999px;
+	overflow: hidden;
 }
 
 .main-toolbar{
 	margin:0;
 	padding:0;
-	height:20%;
+	height:50px;
 	width:100%;
 	background-color: violet;
 }
@@ -25,7 +18,10 @@
 	width:70px;
 }
 .center {
-	height:70%;
+	position:absolute;
+	top:50px;
+	left:0px;
+	bottom:50px;
 	width:100%;
 }
 .right-toolbar{
@@ -33,13 +29,16 @@
 }
 .file-tree{
 	float:left;
-	width:30%;
+	width:200%;
 	height:100%;
 	background-color: orange;
 }
 .main-code {
-	width:70%;
-	height:100%;
+	position:absolute;
+	top:0px;
+	left:200px;
+	bottom:0;
+	right:0;
 	float:left;
 	display: -webkit-flex;
 	display: flex;
@@ -57,11 +56,11 @@
 	max-width:100%;
 }
 .splitter {
-  flex: 0 0 auto;
-  width: 18px;  
-  background: url(https://raw.githubusercontent.com/RickStrahl/jquery-resizable/master/assets/vsizegrip.png) center center no-repeat #535353;
-  min-height: 200px;
-  cursor: col-resize;  
+	flex: 0 0 auto;
+	width: 18px;	
+	background: url(https://raw.githubusercontent.com/RickStrahl/jquery-resizable/master/assets/vsizegrip.png) center center no-repeat #535353;
+	min-height: 200px;
+	cursor: col-resize;	
 }
 .cube-render{
 	height:100%;
@@ -71,6 +70,11 @@
 	flex: 1 1 auto;
 }
 .compiled-commands{
-	height:10%;
+	position:absolute;
+	left:0;
+	bottom:0;
+	height:50px;
 	width:100%;
+	resize:none;
+	background-color:#323232;
 }
