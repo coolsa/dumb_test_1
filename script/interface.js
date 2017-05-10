@@ -23,9 +23,9 @@ define([
 				}
 			});
 			$(window).resize(function(){
-				that.resizeIso();
 				$(".text-render")[0].style.maxWidth = $(".main-code").width()-$(".splitter").width() +"px";
 				$(".center")[0].style.maxHeight = $(window).height()-100 + "px";
+				that.resizeIso();
 			});				
 			that.resizeIso();
 		},
