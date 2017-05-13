@@ -1,4 +1,5 @@
-define(['interface','isoGrid'],function(interface, isoGrid){
+define(['interface','isoGrid','codemirror',
+	'codemirror/mode/htmlmixed/htmlmixed'],function(interface, isoGrid, CodeMirror){
 	function running(){
 		$(".center")[0].style.maxHeight = $(window).height()-100 + "px";
 		this.grid = [];

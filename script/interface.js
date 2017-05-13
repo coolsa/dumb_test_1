@@ -1,12 +1,21 @@
 define([
+	'codemirror',
 	'crafty',
 	'jquery',
-	'jqueryresizable'
-],function(Crafty, $){
+	'jqueryresizable',
+	'codemirror/mode/javascript/javascript'
+],function(CodeMirror, Crafty, $){
 	function interface(){
 		//this.$render-area = $(".main-code");
 		this.isoSize=0;
 		this.slider();
+		this.editor = CodeMirror($(".code-replace")[0],{
+			mode: 'javascript',
+			lineNumbers: true,
+			value: "document.documentElement.innerHTML",
+			theme: 'pastel-on-dark'
+		});
+		this.editor.setSize('100%','100%');
 	}
 	interface.prototype = {
 		slider: function(){
@@ -16,10 +25,10 @@ define([
 				handleSelector: ".splitter",
 				resizeHeight:false,
 				onDrag: function(){
-					that.resizeIso()
+					that.resizeIso();
 				},
 				onDragEnd: function(){
-					that.resizeIso()
+					that.resizeIso();
 				}
 			});
 			$(window).resize(function(){
@@ -27,7 +36,7 @@ define([
 				$(".center")[0].style.maxHeight = $(window).height()-100 + "px";
 				that.resizeIso();
 			});				
-			that.resizeIso();
+			this.resizeIso();
 		},
 		resizeIso: function(){
 				$('.cube-render').width($(".main-code").width()-$(".text-render").width());
@@ -40,3 +49,4 @@ define([
 	}
 	return interface;
 })
+

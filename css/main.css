@@ -3,15 +3,21 @@
 	margin:0;
 	padding:0;
 	height:100%;
-	overflow: hidden;
+	/*overflow: hidden;*/
+	background: inherit;
+	color: #8F938F;
 }
 
 .main-toolbar{
 	margin:0;
 	padding:0;
-	height:50px;
+	height:48px;
 	width:100%;
-	background-color: violet;
+	background: #34302f;
+}
+.top-space{
+	height:2px;
+	background:#403b3a;
 }
 .toolbar-button{
 	display:inline;
@@ -25,13 +31,18 @@
 	width:100%;
 }
 .right-toolbar{
+	background:inherit;
 	float:right;
 }
 .file-tree{
 	float:left;
-	width:200%;
+	width:198px;
 	height:100%;
-	background-color: orange;
+	background: #1c1817;
+}
+.file-space {
+	width:2px;
+	background:#403b3a;
 }
 .main-code {
 	position:absolute;
@@ -43,30 +54,35 @@
 	display: -webkit-flex;
 	display: flex;
 	flex-direction:row;
-	background-color:greenyellow;
 	overflow:hidden;
 }
 .text-render{
 	float:left;
-	background-color:green;
-	display:inline;
+	display:inherit;
+	position:relative;
 	overflow-y:auto;
 	width:50%;
 	flex: 0 0 auto;
 	max-width:100%;
+	background: #2c2827;
+}
+.code-replace{
+	display:block;
+	height:100%;
+	width:100%;
 }
 .splitter {
 	flex: 0 0 auto;
 	width: 18px;	
-	background: url(https://raw.githubusercontent.com/RickStrahl/jquery-resizable/master/assets/vsizegrip.png) center center no-repeat #535353;
+	background: url(../resources/images/splitter.png) center center no-repeat #403b3a;
 	min-height: 200px;
 	cursor: col-resize;	
 }
 .cube-render{
+	background: #2c2827;
 	height:100%;
 	display:inline;
 	float:right;
-	background-color:pink;
 	flex: 1 1 auto;
 }
 .compiled-commands{
@@ -76,5 +92,5 @@
 	height:50px;
 	width:100%;
 	resize:none;
-	background-color:#323232;
+	background: #47413f;
 }
