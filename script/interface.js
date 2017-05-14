@@ -8,6 +8,7 @@ define([
 ],function(CodeMirror, Crafty, $){
 	function interface(){
 		//this.$render-area = $(".main-code");
+		this.isoSize=0;
 		this.editor = CodeMirror($(".code-replace")[0],{
 			mode: 'javascript',
 			lineNumbers: true,
@@ -44,12 +45,15 @@ define([
 				Crafty.viewport.width=$(".main-code").width()-$(".text-render").width()-$(".splitter").width();
 				Crafty.viewport.height=$(".main-code").height();
 				Crafty.viewport.reload();
-				Crafty.viewport.x = ($(".main-code").width()-$(".text-render").width())/2;
+				Crafty.viewport.x = ($(".main-code").width()-$(".text-render").width())/2-8*this.isoSize;
 				Crafty.viewport.y = $(".main-code").height()/2;
 				this.editor.refresh();
 		},
 		jumpTo: function(line){
-			this.editor.setSelection({line:line,ch:0},{line:(line+1),ch:0})
+			var t = this.editor.charCoords({line: line, ch: 0}, "local").top; 
+			var middleHeight = this.editor.getScrollerElement().offsetHeight / 2; 
+			this.editor.scrollTo(null, t - middleHeight - 5); 
+			this.editor.setSelection({line:line,ch:0},{line:line+1,ch:0})
 		}
 	}
 	return interface;
