@@ -12,7 +12,7 @@ define([
 		this.editor = CodeMirror($(".code-replace")[0],{
 			mode: 'javascript',
 			lineNumbers: true,
-			value: "document.documentElement.innerHTML",
+			value: document.documentElement.innerHTML+" "+document.documentElement.innerHTML+" "+document.documentElement.innerHTML,
 			theme: 'pastel-on-dark',
 			scrollbarStyle: 'simple'
 		});
