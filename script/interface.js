@@ -49,7 +49,7 @@ define([
 				this.editor.refresh();
 		},
 		jumpTo: function(line){
-			this.editor.setSelection({line:line,ch:0},{line:line,ch:19191919})
+			this.editor.setSelection({line:line,ch:0},{line:(line+1),ch:0})
 		}
 	}
 	return interface;
