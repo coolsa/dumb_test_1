@@ -50,12 +50,12 @@ define([
 			for(var x=0;x<grid.length;x++){
 				if(grid[x]!=undefined)for(var y=0;y<grid[x].length;y++){
 					if(grid[x][y]!=undefined)for(var z=0;z<grid[x][y].length;z++){
-						this.drawAt(x,y,z,this.newCube(y*32-z),grid[x][y][z]);
+						this.drawAt(x,y,z,this.newCube(y*32-z,x*5+y*25+z),grid[x][y][z]);
 					}
 				}
 			}
 		},
-		newCube: function(layer){//create a new cube with clickable uses! made to modify
+		newCube: function(layer,line){//create a new cube with clickable uses! made to modify
 			var that = this
 			return Crafty.e("2D", "Canvas", "Mouse", "empty")
 			.attr('z',layer)//
@@ -65,6 +65,8 @@ define([
 				that.drawOver(this._x,this._y,this._z,this,"empty");
 			})
 			.bind("Click",function(e){
+				window.run.interface.jumpTo(line);
+				console.log(line);
 				this.destroy();
 			}).bind("MouseOver",function(e){
 				this._children[2].sprite("select");

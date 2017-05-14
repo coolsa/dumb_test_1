@@ -8,13 +8,12 @@ define([
 ],function(CodeMirror, Crafty, $){
 	function interface(){
 		//this.$render-area = $(".main-code");
-		this.isoSize=0;
 		this.editor = CodeMirror($(".code-replace")[0],{
 			mode: 'javascript',
 			lineNumbers: true,
 			value: "document.documentElement.innerHTML",
 			theme: 'pastel-on-dark',
-			scrollbarStyle: 'overlay'
+			scrollbarStyle: 'simple'
 		});
 		this.editor.setSize('100%','100%');
 		this.slider();
@@ -45,9 +44,12 @@ define([
 				Crafty.viewport.width=$(".main-code").width()-$(".text-render").width()-$(".splitter").width();
 				Crafty.viewport.height=$(".main-code").height();
 				Crafty.viewport.reload();
-				Crafty.viewport.x = ($(".main-code").width()-$(".text-render").width())/2-8*this.isoSize;
+				Crafty.viewport.x = ($(".main-code").width()-$(".text-render").width())/2;
 				Crafty.viewport.y = $(".main-code").height()/2;
 				this.editor.refresh();
+		},
+		jumpTo: function(line){
+			this.editor.setSelection({line:line,ch:0},{line:line,ch:19191919})
 		}
 	}
 	return interface;
