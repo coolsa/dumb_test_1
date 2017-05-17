@@ -45,12 +45,15 @@ define([
 	}
 	isoGrid.prototype = {
 		render: function(grid){
+			Crafty("2D").each(function(i) {
+				this.destroy();
+			});
 			Crafty.viewport.x = 0;
 			Crafty.viewport.y = 0;
 			for(var x=0;x<grid.length;x++){
-				if(grid[x]!=undefined)for(var y=0;y<grid[x].length;y++){
-					if(grid[x][y]!=undefined)for(var z=0;z<grid[x][y].length;z++){
-						this.drawAt(x,y,z,this.newCube(y*32-z,x*5+y*25+z),grid[x][y][z]);
+				if(grid[x]!=undefined)for(var z=0;z<grid[x].length;z++){
+					if(grid[x][z]!=undefined)for(var y=0;y<grid[x][z].length;y++){
+						this.drawAt(x,y,z,this.newCube(y*32-z,x*5+y*25+z),grid[x][z][y]);
 					}
 				}
 			}
@@ -66,7 +69,6 @@ define([
 			})
 			.bind("Click",function(e){
 				window.run.interface.jumpTo(line);
-				console.log(line);
 				this.destroy();
 			}).bind("MouseOver",function(e){
 				this._children[2].sprite("select");
@@ -95,6 +97,31 @@ define([
 			child=parent._children.length;
 			parent.attach(Crafty.e("2D","Canvas",sprite).attr('z',z));
 			this.isoGrid.place(px.x,px.y,0,parent._children[child]);
+		},
+		rotateCW: function(grid){
+			var newGrid = [[]];
+			for(var x=0;x<grid.length;x++){
+				if(grid[x]!=undefined)for(var z=0;z<grid[x].length;z++){
+					grid[x][z].forEach(function(i){
+						var tmp = i.face;
+						if(i.face=="pos_x_norm")tmp="neg_z_norm";
+						if(i.face=="neg_z_norm")tmp="neg_x_norm";
+						if(i.face=="neg_x_norm")tmp="pos_z_norm";
+						if(i.face=="pos_z_norm")tmp="pos_x_norm";
+						if(i.face=="pos_x_cond")tmp="neg_z_cond";
+						if(i.face=="neg_z_cond")tmp="neg_x_cond";
+						if(i.face=="neg_x_cond")tmp="pos_z_cond";
+						if(i.face=="pos_z_cond")tmp="pos_x_cond";
+						i.face=tmp;
+					});
+					if(newGrid[z]==undefined)newGrid[z]=[];
+					newGrid[z][x]=grid[grid.length-1-x][z];
+				}
+			}
+			return newGrid;
+		},
+		rotateCCW: function(grid){
+			return this.rotateCW(this.rotateCW(this.rotateCW(grid)));
 		}
 	}
 	return isoGrid;

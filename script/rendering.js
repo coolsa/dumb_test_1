@@ -14,7 +14,7 @@ define(['crafty','jquery','jqueryresizable'], function(){
 		$(window).resize(function(){
 			resizeIso();
 			document.getElementById("text-render").style.maxWidth = $(".main-code").width()-$(".splitter").width() +"px";
-		});				
+		});
 		resizeIso();
 	}
 	function resizeIso(){

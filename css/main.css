@@ -6,13 +6,15 @@
   font:inherit;
 	color: #8F938F;
 }
-
 .main-toolbar{
 	margin:0;
 	padding:0;
 	height:48px;
 	width:100%;
 	background: #34302f;
+}
+body {
+	background: #2c2827;
 }
 .top-space{
 	height:2px;
@@ -74,15 +76,15 @@
 }
 .splitter {
 	flex: 0 0 auto;
-	width: 18px;	
+	width: 18px;
 	background: url(../resources/images/splitter.png) center center no-repeat #403b3a;
 	min-height: 200px;
-	cursor: col-resize;	
+	cursor: col-resize;
 }
 .cube-render{
 	background: #2c2827;
 	height:100%;
-	display:inline;
+	display:inline; 
 	float:right;
 	flex: 1 1 auto;
 }

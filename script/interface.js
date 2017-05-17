@@ -31,13 +31,15 @@ define([
 				},
 				onDragEnd: function(){
 					that.resizeIso();
+					that.editor.refresh();
 				}
 			});
 			$(window).resize(function(){
 				$(".text-render")[0].style.maxWidth = $(".main-code").width()-$(".splitter").width() +"px";
 				$(".center")[0].style.maxHeight = $(window).height()-100 + "px";
 				that.resizeIso();
-			});				
+				that.editor.refresh();
+			});
 			this.resizeIso();
 		},
 		resizeIso: function(){
@@ -47,15 +49,13 @@ define([
 				Crafty.viewport.reload();
 				Crafty.viewport.x = ($(".main-code").width()-$(".text-render").width())/2-8*this.isoSize;
 				Crafty.viewport.y = $(".main-code").height()/2;
-				this.editor.refresh();
 		},
 		jumpTo: function(line){
-			var t = this.editor.charCoords({line: line, ch: 0}, "local").top; 
-			var middleHeight = this.editor.getScrollerElement().offsetHeight / 2; 
-			this.editor.scrollTo(null, t - middleHeight - 5); 
+			var t = this.editor.charCoords({line: line, ch: 0}, "local").top;
+			var middleHeight = this.editor.getScrollerElement().offsetHeight / 2;
+			this.editor.scrollTo(null, t - middleHeight - 5);
 			this.editor.setSelection({line:line,ch:0},{line:line+1,ch:0})
 		}
 	}
 	return interface;
-})
-
+});

@@ -5,24 +5,45 @@ define(['interface','isoGrid','codemirror',
 		this.grid = [];
 		for(var x=0;x<5;x++){
 			this.grid[x]=[];
-			for(var y=0;y<3;y++){
-				this.grid[x][y]=[];
-				for(var z=0;z<5;z++){
-					this.grid[x][y][z]={
+			for(var z=0;z<4;z++){
+				this.grid[x][z]=[];
+				for(var y=0;y<3;y++){
+					this.grid[x][z][y]={
 						type:"repeating",
 						dir:"empty"
 					}
 					if(y==0){
-						this.grid[x][y][z].type="chain";
-						this.grid[x][y][z].face="neg_z_cond";
+						this.grid[x][z][y].type="chain";
+						this.grid[x][z][y].face="neg_z_cond";
 					}
 					if(y==1){
-						this.grid[x][y][z].type="impulse";
-						this.grid[x][y][z].face="pos_x_norm";
+						this.grid[x][z][y].type="impulse";
+						this.grid[x][z][y].face="pos_x_norm";
 					}
 					if(y==2){
-						this.grid[x][y][z].type="repeating";
-						this.grid[x][y][z].face="pos_y_cond";
+						this.grid[x][z][y].type="repeating";
+						this.grid[x][z][y].face="pos_y_cond";
+					}
+				}
+			}
+			for(var z=4;z<6;z++){
+				this.grid[x][z]=[];
+				for(var y=0;y<4;y++){
+					this.grid[x][z][y]={
+						type:"repeating",
+						dir:"empty"
+					}
+					if(y==0){
+						this.grid[x][z][y].type="chain";
+						this.grid[x][z][y].face="neg_z_cond";
+					}
+					if(y==1){
+						this.grid[x][z][y].type="impulse";
+						this.grid[x][z][y].face="pos_x_norm";
+					}
+					if(y==2){
+						this.grid[x][z][y].type="repeating";
+						this.grid[x][z][y].face="pos_y_cond";
 					}
 				}
 			}
