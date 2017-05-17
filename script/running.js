@@ -10,7 +10,8 @@ define(['interface','isoGrid','codemirror',
 				for(var y=0;y<3;y++){
 					this.grid[x][z][y]={
 						type:"repeating",
-						dir:"empty"
+						dir:"empty",
+						line:x*5+y*25+z
 					}
 					if(y==0){
 						this.grid[x][z][y].type="chain";
