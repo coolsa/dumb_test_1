@@ -115,6 +115,7 @@ body {
 	width:100%;
 	resize:none;
 	background: #47413f;
+	font-size: 0.75em;
 }
 .CodeMirror-simplescroll-horizontal div, .CodeMirror-simplescroll-vertical div {
   position: absolute;

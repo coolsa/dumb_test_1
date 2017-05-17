@@ -42,6 +42,7 @@ define([
 			});
 		});
 		this.isoGrid = Crafty.isometric.size(32);
+		this.largestZ = 0;
 	}
 	isoGrid.prototype = {
 		render: function(grid){
@@ -101,7 +102,8 @@ define([
 		rotateCW: function(grid){
 			var newGrid = [[]];
 			for(var x=0;x<grid.length;x++){
-				if(grid[x]!=undefined)for(var z=0;z<grid[x].length;z++){
+				if(grid[x]!=undefined)for(var z=0;z<=this.largestZ;z++){
+					if(grid[x][z]==undefined)grid[x][z]=[];
 					grid[x][z].forEach(function(i){
 						var tmp = i.face;
 						if(i.face=="pos_x_norm")tmp="neg_z_norm";

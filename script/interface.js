@@ -32,6 +32,12 @@ define([
 				window.run.iso.render(window.run.grid);
 				window.run.interface.resizeIso();
 			};
+			document.getElementById("undo").onclick = function() {
+				window.run.interface.editor.execCommand("undo");
+			};
+			document.getElementById("redo").onclick = function() {
+				window.run.interface.editor.execCommand("redo");
+			};
 		},
 		slider: function(){
 			var that = this;
