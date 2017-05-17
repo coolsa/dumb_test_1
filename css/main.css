@@ -20,10 +20,28 @@ body {
 	height:2px;
 	background:#403b3a;
 }
+.noselect {
+   cursor: default;
+   -webkit-user-select: none;
+   -webkit-touch-callout: none;
+   -khtml-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   -o-user-select: none;
+}
+
+.noselect:focus {
+   outline: none;
+}
 .toolbar-button{
 	display:inline-block;
 	text-align:center;
-  padding: 15px 15px;
+  padding: 13px 15px;
+}
+.toolbar-button:hover:not(.active){
+	background-color:#403B3A;
+	border-bottom: 2px solid #3f5;
+	cursor:pointer;
 }
 .center {
 	background:#403b3a;

@@ -49,6 +49,7 @@ define(['interface','isoGrid','codemirror',
 				}
 			}
 		}
+		
 		this.iso = new isoGrid();
 		this.interface = new interface();
 		this.interface.isoSize=(this.grid.length+this.grid[0][0].length);
