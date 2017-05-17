@@ -32,7 +32,8 @@ define(['interface','isoGrid','codemirror',
 				for(var y=0;y<4;y++){
 					this.grid[x][z][y]={
 						type:"repeating",
-						dir:"empty"
+						dir:"empty",
+						line:x*5+y*25+z
 					}
 					if(y==0){
 						this.grid[x][z][y].type="chain";
@@ -46,10 +47,13 @@ define(['interface','isoGrid','codemirror',
 						this.grid[x][z][y].type="repeating";
 						this.grid[x][z][y].face="pos_y_cond";
 					}
+					if(y==3){
+						this.grid[x][z][y].face="neg_x_cond";
+					}
 				}
 			}
 		}
-		
+
 		this.iso = new isoGrid();
 		this.interface = new interface();
 		this.interface.isoSize=(this.grid.length+this.grid[0][0].length);

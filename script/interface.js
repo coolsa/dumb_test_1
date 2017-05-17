@@ -18,18 +18,21 @@ define([
 		});
 		this.editor.setSize('100%','100%');
 		this.slider();
-		document.getElementById("turn-cw").onclick = function() {
-			window.run.grid = window.run.iso.rotateCW(window.run.grid);
-			window.run.iso.render(window.run.grid);
-			window.run.interface.resizeIso();
-		};
-		document.getElementById("turn-ccw").onclick = function() {
-			window.run.grid = window.run.iso.rotateCCW(window.run.grid);
-			window.run.iso.render(window.run.grid);
-			window.run.interface.resizeIso();
-		};
+		this.buttons();
 	}
 	interface.prototype = {
+		buttons: function(){
+			document.getElementById("turn-cw").onclick = function() {
+				window.run.grid = window.run.iso.rotateCW(window.run.grid);
+				window.run.iso.render(window.run.grid);
+				window.run.interface.resizeIso();
+			};
+			document.getElementById("turn-ccw").onclick = function() {
+				window.run.grid = window.run.iso.rotateCCW(window.run.grid);
+				window.run.iso.render(window.run.grid);
+				window.run.interface.resizeIso();
+			};
+		},
 		slider: function(){
 			var that = this;
 			$(".text-render")[0].style.maxWidth = $(".main-code").width()-$(".splitter").width() +"px";
