@@ -22,6 +22,7 @@ define([
 	}
 	interface.prototype = {
 		buttons: function(){
+			var that = this;
 			document.getElementById("turn-cw").onclick = function() {
 				window.run.grid = window.run.iso.rotateCW(window.run.grid);
 				window.run.iso.render(window.run.grid);
@@ -38,6 +39,9 @@ define([
 			document.getElementById("redo").onclick = function() {
 				window.run.interface.editor.execCommand("redo");
 			};
+			$(".compiled-commands")[0].onclick = function() {
+				that.selectCompiled();
+			}
 		},
 		slider: function(){
 			var that = this;
@@ -74,6 +78,13 @@ define([
 			var middleHeight = this.editor.getScrollerElement().offsetHeight / 2;
 			this.editor.scrollTo(null, t - middleHeight - 5);
 			this.editor.setSelection({line:line,ch:0},{line:line+1,ch:0})
+		},
+		selectCompiled: function(){
+			var selection = window.getSelection();
+			var range = document.createRange();
+			range.selectNodeContents($(".compiled-commands")[0]);
+			selection.removeAllRanges();
+			selection.addRange(range);
 		}
 	}
 	return interface;

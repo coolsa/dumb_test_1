@@ -59,7 +59,7 @@ body {
 	float:left;
 	width:198px;
 	height:100%;
-	background: #1c1817;
+	background: #232020;
 }
 .file-space {
 	width:2px;
@@ -116,6 +116,7 @@ body {
 	resize:none;
 	background: #47413f;
 	font-size: 0.75em;
+	overflow:auto;
 }
 .CodeMirror-simplescroll-horizontal div, .CodeMirror-simplescroll-vertical div {
   position: absolute;
