@@ -54,7 +54,7 @@ define([
 			for(var x=0;x<grid.length;x++){
 				if(grid[x]!=undefined)for(var z=0;z<grid[x].length;z++){
 					if(grid[x][z]!=undefined)for(var y=0;y<grid[x][z].length;y++){
-						this.drawAt(x,y,z,this.newCube(y*32-z,grid[x][z][y].line),grid[x][z][y]);
+						this.drawAt(x,y,z,this.newCube(y*32-z,grid[x][z][y].line,x,y,z),grid[x][z][y]);
 					}
 				}
 			}

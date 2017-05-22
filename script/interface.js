@@ -2,10 +2,12 @@ define([
 	'codemirror',
 	'crafty',
 	'jquery',
+	'filetree',
+	'compiler',
 	'jqueryresizable',
 	'codemirror/mode/javascript/javascript',
 	'codemirror/addon/scroll/simplescrollbars'
-],function(CodeMirror, Crafty, $){
+],function(CodeMirror, Crafty, $, filetree, compiler){
 	function interface(){
 		//this.$render-area = $(".main-code");
 		this.isoSize=0;
@@ -19,6 +21,7 @@ define([
 		this.editor.setSize('100%','100%');
 		this.slider();
 		this.buttons();
+		this.compiler = new compiler($(".compiled-commands"),this.editor);
 	}
 	interface.prototype = {
 		buttons: function(){
@@ -41,7 +44,7 @@ define([
 			};
 			$(".compiled-commands")[0].onclick = function() {
 				that.selectCompiled();
-			}
+			};
 		},
 		slider: function(){
 			var that = this;

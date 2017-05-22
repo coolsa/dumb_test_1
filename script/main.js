@@ -17,6 +17,8 @@ require([
 	'domReady',
 	'isoGrid',
 	'interface',
+	'filetree',
+	'compiler',
 	'crafty',
 	'jquery',
 	'jqueryresizable',
