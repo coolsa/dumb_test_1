@@ -10,15 +10,18 @@ define([
 ],function(CodeMirror, Crafty, $, filetree, compiler){
 	function interface(){
 		//this.$render-area = $(".main-code");
+		if(localStorage.text==undefined)localStorage.text="";
 		this.isoSize=0;
 		this.editor = CodeMirror($(".code-replace")[0],{
 			mode: 'javascript',
 			lineNumbers: true,
-			value: document.documentElement.innerHTML+" "+document.documentElement.innerHTML+" "+document.documentElement.innerHTML,
+			value: localStorage.text,
 			theme: 'pastel-on-dark',
 			scrollbarStyle: 'simple'
 		});
 		this.editor.setSize('100%','100%');
+		var editor = this.editor;
+		this.editor.on("change",function(){localStorage.text = editor.getValue()})
 		this.slider();
 		this.buttons();
 		this.compiler = new compiler($(".compiled-commands"),this.editor);
