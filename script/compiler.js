@@ -7,6 +7,7 @@ define([],function(){
     this.compiled.text(this.output);
   }
   compiler.prototype = {
+    
     fancy: function(){
       this.compiled.text(window.run.interface.editor.getValue());
     },

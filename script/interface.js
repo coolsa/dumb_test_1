@@ -29,6 +29,9 @@ define([
 	interface.prototype = {
 		buttons: function(){
 			var that = this;
+		  document.getElementById("compile").onclick = function() {
+				window.run.interface.compiler.fancy();
+			};
 			document.getElementById("turn-cw").onclick = function() {
 				window.run.grid = window.run.iso.rotateCW(window.run.grid);
 				window.run.iso.render(window.run.grid);
